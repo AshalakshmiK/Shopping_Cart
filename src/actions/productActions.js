@@ -76,7 +76,7 @@ export const sortByPrice=(items,sortorder,searchTerm,range)=>(dispatch)=>{
     }else if(sortorder==="discount"){
       products=items.slice().sort((a,b)=>(a.discount>b.discount?1:-1)).filter((a)=>{
         return a.price>range.min && a.price<range.max;
-    }).filter(a=>a.name.includes.toLowerCase()(searchTerm.toLowerCase()))
+    }).filter(a=>a.name.toLowerCase().includes(searchTerm.toLowerCase()))
     }
     else{
         products=items.slice().sort((a,b)=>(a.id>b.id ? 1: -1)).filter((a)=>{
