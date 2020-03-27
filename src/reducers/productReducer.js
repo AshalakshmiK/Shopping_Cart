@@ -1,11 +1,11 @@
 
-const initialstate = {items:[],searchItems:[],searchTerm:"",filter:"",range:{"min":100,"max":1000},isLoading:true}
+const initialstate = {items:[],searchItems:[],searchTerm:"",filter:"",range:{"min":100,"max":1000},isLoading:true,sort:""}
 
 export default function(state=initialstate,action){
     switch(action.type){
         case 'FETCH_PRODUCTS':
 
-                   return {...state,items:action.payload,searchItems:action.payload,isLoading:action.loading,filter:""}
+                   return {...state,items:action.payload,searchItems:action.payload,isLoading:action.loading,sort:""}
 
         case 'SORT_BY_PRICE':
         
