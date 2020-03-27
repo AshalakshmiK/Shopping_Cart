@@ -5,7 +5,7 @@ export default function(state=initialstate,action){
     switch(action.type){
         case 'FETCH_PRODUCTS':
 
-                   return {...state,items:action.payload,searchItems:action.payload,isLoading:action.loading}
+                   return {...state,items:action.payload,searchItems:action.payload,isLoading:action.loading,filter:""}
 
         case 'SORT_BY_PRICE':
         
@@ -66,7 +66,7 @@ export default function(state=initialstate,action){
                                    else{
                                    products=action.payload.fullList.slice().filter((a)=>{
                                         return a.price>action.payload.range.min && a.price<action.payload.range.max;
-                                   }).filter((val) => val.name.indexOf.toLowerCase()(search.toLowerCase())>-1)
+                                   }).filter((val) => val.name.toLowerCase().indexOf(search.toLowerCase())>-1)
                                 }
                                 console.log("last else called")
                             return{
