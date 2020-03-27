@@ -1,0 +1,17 @@
+$secondary-color:rgb(64, 64, 218);
+$backgroundColor:rgb(216, 209, 209);
+$cursorPointer:pointer;
+
+@mixin rounded-div($backgoundcolor,$boderColor,$color){
+  background-color: $backgoundcolor;
+  border-radius: 50%;
+  border:1px solid $boderColor;
+  display:inline-block;
+  height: 20px;
+  width: 18px;
+  text-align: center;
+  cursor: pointer;
+  bottom:2px;
+  right: 9px;
+  color: $color
+}

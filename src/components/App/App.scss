@@ -1,0 +1,275 @@
+@import './styles/config';
+
+*{
+  font-family: Verdana;
+  margin:0;
+  padding: 0;
+  box-sizing:border-box;
+  font-size: 14px;
+}
+
+.count{
+  @include rounded-div(red,gray,white);
+  position: relative;
+}
+.cartCountDiv{
+  @include rounded-div(white,gray,gray)
+}
+.navbar{
+  grid-area: header;
+  width: 100%;
+  background-color: $secondary-color;
+  .staricon{
+    transform: translateY(50%);
+    font-size:20px;
+   }
+  .searchicon{
+    font-size:20px;
+    cursor:$cursorPointer;
+    color: white;
+    transform: translateY(50%)
+  }
+  .cart{
+    font-size:20px;
+    cursor:$cursorPointer;
+    color: white;
+    transform: translateY(50%)
+  }
+}
+
+
+.gridConainer{
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  grid-template-areas: 'header header'
+                        'left sort'
+                        'left productlist'
+                        'footer footer';
+  grid-template-rows: 50px 30px 1fr 30px;
+  grid-template-columns: 200px 1fr;
+
+  .left{
+    grid-area: left;
+    border-right: 2px solid rgb(177, 165, 165);
+    padding-left: 25px;
+    padding-top: 12px;
+    background-color: $backgroundColor;
+  }
+  .right{
+    grid-area: right;
+    background-color: $backgroundColor;
+    padding: 20px;
+    overflow-y: scroll;
+  }
+  
+  .sort{
+    grid-area: sort;
+  }
+}
+
+.footer{
+  grid-area: footer;
+  background-color: $secondary-color;
+  text-align: center;
+  color: white;
+}
+
+.productlist{
+  grid-area: productlist;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+  grid-row-gap: 40px;
+  overflow-y: scroll;
+  grid-column-gap: 40px;
+  
+  button{
+    background-color: rgb(250, 180, 51);
+    border-radius: 15px;
+    border:none;
+    cursor: $cursorPointer;
+    padding: 2px 0px;
+    width: 70%;
+  }
+  .productListItem{
+    display: grid;
+    grid-template-columns: 150px;
+    grid-template-rows: repeat(1,170px 25px 25px 25px);
+    //grid-row-gap: 6px;
+    
+  }
+}
+
+.itemimage{
+  max-width:130px;
+  min-height:150px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.input-range {
+  width: 70% !important;
+  padding-left: 50px;
+}
+
+input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  position: relative;
+  transform: translateY(50%);
+}
+input:focus{
+  outline: none;
+}
+input[type=radio] {
+margin: 5px;
+cursor: $cursorPointer;
+}
+.cartContainer{
+  display: grid;
+  height: 100vh;
+  background-color: $backgroundColor;
+  grid-template-areas:    'header'
+                          'cartbody'
+                           'footer';
+
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 1fr 20px;
+ .cartbody{
+   grid-area: cartbody;
+   display: grid;
+   grid-template-columns: auto auto;
+   padding: 10px;
+   grid-gap: 10px;
+   overflow-y: scroll
+ }
+  .cartitems{
+   // grid-area: cartleft;
+    display: grid;
+    grid-gap: 10px;
+   // padding: 10px;
+  }
+  .totalprice{
+   // grid-area: cartright;
+   height: 50%;
+    border:1px solid #bab1b1;
+    background-color: white;
+    padding: 10px;
+   // float: right;
+  }
+}
+
+.cartitem{
+  display: grid;
+  border:1px solid #bab1b1;
+  background-color: white;
+  grid-template-columns: auto auto auto auto;  
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+
+/*Start of responsive design for mobile phone*/
+@media (max-width: 600px) {
+  /* For mobile phones: */
+  .gridConainer{
+    display: grid;
+    background-color: $backgroundColor;
+    ///width: 100%;
+    height: 100vh;
+    grid-template-areas: 'header header'
+                          'sort left'
+                          'productlist productlist'
+                          'footer footer';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px 1fr 30px;
+    .left{
+      grid-area: left;
+      border-right: none;
+      padding: 0px;
+     
+    }
+  }
+  .button {
+    background-color: $backgroundColor; 
+    border: 1px solid rgb(161, 158, 158);
+    color: black;
+    padding: 13px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    //font-size: 16px;
+    width: 100%;
+    cursor: $cursorPointer
+  }
+  .productlist{
+    grid-area: productlist;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: auto auto;
+    overflow-y: scroll;
+    padding: 20px;
+   }
+  .sort{
+    grid-area: sort;
+    //padding: 15px;
+  }
+  .cartContainer{
+    .cartbody{
+      grid-template-columns: auto;
+    }
+      .totalprice{
+      height:95%;
+      margin-bottom: 5px;
+      }
+    }
+  .cartitem{
+    display: grid;
+    border:1px solid #bab1b1;
+    background-color: white;
+    grid-template-columns: auto auto;  
+    grid-gap: 10px;
+    padding: 10px;
+  }
+}
+/*End of responsive design for mobile phone*/
+ul{
+  list-style-type: none;
+  li{
+    float: left;
+    padding: 12px;
+    span{
+      cursor: $cursorPointer;
+    }
+  }
+}
+
+
+.itemCount{
+  border: 2px solid gray;
+  margin: 5px;
+  padding: 3px;
+}
+
+.price{
+  text-decoration: line-through;
+  font-size: 10px;
+  color: gray;
+  margin: 3px;
+}
+.discount{
+  color: green;
+}
+td{
+  padding: 5px;
+}
+
+.popupFilter,.popupSort{
+  padding: 10px;
+  .input-range{
+    margin: 20px;
+  }
+}
