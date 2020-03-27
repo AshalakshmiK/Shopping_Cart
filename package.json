@@ -7,7 +7,7 @@
     "npm":"5.6.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "./node_modules/webpack/bin/webpack.js -p --progress && node server.js",
     "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
