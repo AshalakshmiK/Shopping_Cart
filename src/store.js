@@ -7,7 +7,6 @@ const initialstate={}
 
 if(localStorage.getItem('cartItems')){
   initialstate.cart = {items:JSON.parse(localStorage.getItem('cartItems')),cartItemsSearch:JSON.parse(localStorage.getItem('cartItems'))}
-  //initialstate.cart = {}
 }
 
 export default createStore(rootReducer,initialstate,composeWithDevTools(

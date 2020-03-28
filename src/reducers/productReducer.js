@@ -5,7 +5,7 @@ export default function(state=initialstate,action){
     switch(action.type){
         case 'FETCH_PRODUCTS':
 
-                   return {...state,items:action.payload,searchItems:action.payload,isLoading:action.loading}
+                   return {...state,items:action.payload,searchItems:action.payload,isLoading:action.loading,sort:""}
 
         case 'SORT_BY_PRICE':
         
