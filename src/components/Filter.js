@@ -27,31 +27,39 @@ class Filter extends Component {
   }
     render() {
       if(this.props.isMobile || window.innerWidth<600){
-        return(
-          <div>
-          <Popup  trigger={<button className="button"><FontAwesomeIcon icon={faFilter} 
-          style={{"color":"black"}}/> Filter </button>} 
-             modal>
-              {close => (
-                 <div className="popupFilter">
-                 <h4>Filters</h4> <br/><br/>
-                 <InputRange 
-                 className="inputrange"
-                 step={100}
-                 maxValue={this.state.maxValue}
-                 minValue={this.state.minValue}
-                 value={this.state.value}
-                 onChange={value => this.setState({ value })} 
-                 onChangeComplete={value => this.onChangeComplete(value)}/> 
-                     <button className="button" onClick={close}>
-                     Apply
-                    </button>
-                 </div>
-             )}
-         </Popup>
-
-          </div>
-        )
+        if(this.props.searchItems.length){
+          return(
+            <div>
+            <Popup  trigger={<button className="button"><FontAwesomeIcon icon={faFilter} 
+            style={{"color":"black"}}/> Filter </button>} 
+               modal>
+                {close => (
+                   <div className="popupFilter">
+                   <h4>Filters</h4> <br/><br/>
+                   <InputRange 
+                   className="inputrange"
+                   step={100}
+                   maxValue={this.state.maxValue}
+                   minValue={this.state.minValue}
+                   value={this.state.value}
+                   onChange={value => this.setState({ value })} 
+                   onChangeComplete={value => this.onChangeComplete(value)}/> 
+                       <button className="button" onClick={close}>
+                       Apply
+                      </button>
+                   </div>
+               )}
+           </Popup>
+  
+            </div>
+          )
+        }else{
+          return ""
+        }
+        
+      }else{
+        if(this.props.searchItems.length===0 && this.props.searchTerm.length){
+          return ""
       }else{
         return (
           <div>
@@ -65,6 +73,7 @@ class Filter extends Component {
             onChange={value => this.setState({ value })} 
             onChangeComplete={value => this.onChangeComplete(value)}/>
       </div>);
+      }     
       }
      
     }

@@ -28,12 +28,11 @@ class Search extends Component{
        
     }
 
-    
     render(){
       
         return(
             <React.Fragment>
-                <input type="text" onChange={this.props.onChange} style={{display:this.state.searchvisibility}} name="searchTerm" autoFocus/>
+                <input type="text"  onChange={this.props.onChange} style={{display:this.state.searchvisibility}} name="searchTerm" />
                 <FontAwesomeIcon className="searchicon" onClick={this.displaySearchIcon} icon={faSearch}>
                 Search</FontAwesomeIcon>
             </React.Fragment>

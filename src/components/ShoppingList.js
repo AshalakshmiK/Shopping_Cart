@@ -49,16 +49,22 @@ class ShoppingList extends Component{
             })    
     }
     render(){
-
-     const { isMobile } = this.state;
-     const prod=this.props.searchproducts.map(pro=>{
-           return <div className="productListItem"  key={pro.id}>
-                    <img src={pro.img_url} alt="" className="itemimage"/>
-                    <div>{pro.name}</div>
-                    <div>&#8377;{pro.price-pro.price*pro.discount/100} <span className="price"> {pro.price}</span> <span className="discount">{pro.discount}% off</span> </div>
-                    <button onClick={()=>this.props.addToCart(this.props.cartItems,pro)}>Add to cart</button>
-                  </div>
-        })
+    const { isMobile } = this.state;
+    let prod;
+   // console.log(this.props.searchproducts.length)
+    if(this.props.searchproducts.length){
+        prod=this.props.searchproducts.map(pro=>{
+            return <div className="productListItem"  key={pro.id}>
+                     <img src={pro.img_url} alt="" className="itemimage"/>
+                     <div>{pro.name}</div>
+                     <div>&#8377;{pro.price-pro.price*pro.discount/100} <span className="price"> {pro.price}</span> <span className="discount">{pro.discount}% off</span> </div>
+                     <button onClick={()=>this.props.addToCart(this.props.cartItems,pro)}>Add to cart</button>
+                   </div>
+         })
+    }else if(this.props.searchproducts.length===0 && this.props.searchTerm.length){
+        prod=<h1>No matching Products found</h1>
+    }
+     
         return(          
              <div className="gridConainer">
                 <div className="navbar">
@@ -93,7 +99,8 @@ const mapStateToProps=state=>(
     filter:state.products.filter,
     range:state.products.range,
     sort:state.products.sort,
-    Loading:state.products.isLoading
+    Loading:state.products.isLoading,
+    searchTerm:state.products.searchTerm
 })
 
 export default connect(mapStateToProps,{addToCart,fetchProducts,search,sortByPrice})(ShoppingList);

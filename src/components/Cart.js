@@ -17,7 +17,6 @@ class Cart extends Component{
     }
     render(){
         const length=this.props.cartItemsSearch.length
-
         const total=this.props.cartItemsSearch.reduce((r,item)=>{
            return item.price*item.count+r;
         },0)
@@ -25,6 +24,7 @@ class Cart extends Component{
         const discount=this.props.cartItemsSearch.reduce((r,item)=>{
             return (item.price*item.discount/100*item.count)+r
         },0)
+
         let cart,totalPriceTable;
         if(this.props.cartItemsSearch.length){
           cart =  this.props.cartItemsSearch.map(item=>{
@@ -53,8 +53,11 @@ class Cart extends Component{
             </div>
             
         }
-        else{
+       else if(this.props.cartItems.length===0){
             cart=<h5>Your cart is empty</h5>
+            totalPriceTable=""
+        } else{
+            cart=<h5>No matching products found in cart</h5>
             totalPriceTable=""
         }
         return(
@@ -79,8 +82,8 @@ class Cart extends Component{
 const mapStateToProps=state=>(
     { 
         cartItems:state.cart.items,
-        cartItemsSearch:state.cart.cartItemsSearch
-
+        cartItemsSearch:state.cart.cartItemsSearch,
+        searchTerm:state.products.searchTerm
     })
 
 export default connect(mapStateToProps,{addToCart,removeFromCart,fetchProducts,incrementCount,decrementCount,
