@@ -13,10 +13,10 @@ class Search extends Component{
             searchTerm:"",
             //item:[]
         }
-        this.inputRef = React.createRef();
+        
     }
     displaySearchIcon=()=>{
-
+     
         if(this.state.searchvisibility===""){
             this.setState({
                 searchvisibility:"none"
@@ -34,7 +34,7 @@ class Search extends Component{
       
         return(
             <React.Fragment>
-                <input  type="text" onChange={this.props.onChange} style={{display:this.state.searchvisibility}} name="searchTerm"/>
+                <input  type="text" onChange={this.props.onChange} style={{display:this.state.searchvisibility}} name="searchTerm" autoFocus="autofocus"/>
                 <FontAwesomeIcon className="searchicon" onClick={this.displaySearchIcon} icon={faSearch}>
                 Search</FontAwesomeIcon>
             </React.Fragment>
