@@ -1,5 +1,5 @@
 var path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //var nodeExternals = require('webpack-node-externals');
 const HtmlwebpackPlugin = require('html-webpack-plugin')
 // var extractPlugin = new ExtractTextPlugin({
@@ -32,7 +32,11 @@ module.exports ={
                 exclude:/node_modules/,
                     use:['style-loader','css-loader','sass-loader']
             
-            }
+            },
+            {
+                test: /\.(gif|svg|jpg|png)$/,
+                loader: "file-loader",
+              }
         ]
     },
     devServer: {

@@ -5,6 +5,8 @@ import {addToCart,removeFromCart,incrementCount,decrementCount,searchCartItems} 
 import {fetchProducts,clearData} from '../actions/productActions'
 
 import Header from './Header'
+import product from './product.jpg';
+
 class Cart extends Component{
   
    componentDidMount(){
@@ -31,7 +33,7 @@ class Cart extends Component{
         if(this.props.cartItemsSearch.length){
           cart =  this.props.cartItemsSearch.map(item=>{
                 return <div key={item.id} className="cartitem"> 
-                        <img src={item.img_url} alt="" className="itemimage"/>
+                        <img src={product} alt="" className="itemimage"/>
                         <div className="cartitem1">
                         <table><tbody><tr><td>
                             {item.name}</td></tr>

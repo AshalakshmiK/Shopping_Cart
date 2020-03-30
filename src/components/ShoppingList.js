@@ -6,8 +6,8 @@ import {connect} from 'react-redux'
 import {addToCart} from '../actions/cartActions'
 import {fetchProducts,sortByPrice,search} from '../actions/productActions'
 import Filter from './Filter'
-//import throttle from 'lodash.throttle';
 import Header from './Header'
+import product from './product.jpg';
 import Sort from './Sort';
 
 
@@ -55,7 +55,7 @@ class ShoppingList extends Component{
     if(this.props.searchproducts.length){
         prod=this.props.searchproducts.map(pro=>{
             return <div className="productListItem"  key={pro.id}>
-                     <img src="https://lorempixel.com/500/600/technics/" alt="" className="itemimage"/>
+                     <img src={product} alt="" className="itemimage"/>
                      <div>{pro.name}</div>
                      <div>&#8377;{pro.price-pro.price*pro.discount/100} <span className="price"> {pro.price}</span> <span className="discount">{pro.discount}% off</span> </div>
                      <button onClick={()=>this.props.addToCart(this.props.cartItems,pro)}>Add to cart</button>
