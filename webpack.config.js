@@ -1,6 +1,6 @@
 var path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-var nodeExternals = require('webpack-node-externals');
+//var nodeExternals = require('webpack-node-externals');
 const HtmlwebpackPlugin = require('html-webpack-plugin')
 // var extractPlugin = new ExtractTextPlugin({
 //     filename:'main.css'
