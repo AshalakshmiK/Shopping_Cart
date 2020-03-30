@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, FILTER_BY_RANGE, SEARCH, SORT_BY_PRICE } from "./types";
+import {CLEAR_SORT, FETCH_PRODUCTS, FILTER_BY_RANGE, SEARCH, SORT_BY_PRICE } from "./types";
 
 export const fetchProducts=(loading)=>(dispatch)=>{
    fetch(`https://api.myjson.com/bins/qzuzi`).then(res=>res.json())
@@ -94,3 +94,11 @@ export const sortByPrice=(items,sortorder,searchTerm,range)=>(dispatch)=>{
 }
 
 
+export const clearData=(products)=>(dispatch)=>{
+    return dispatch({
+        type:CLEAR_SORT,
+        payload:{
+            items:products
+        }
+    })
+}

@@ -30,6 +30,6 @@ export default function(state=initialState, action){
                     cartItemsSearch:action.payload.cartItemsSearch
                 }
         default:
-            return state;
+                return state;
     }
 }

@@ -13,8 +13,8 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Route path="/" exact component={ShoppingList} />
         <Suspense fallback={<Loader/>}>
+        <Route path="/" exact component={ShoppingList} />
         <Route path="/cart"  component={Cart} />
         </Suspense>
       </Router>

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 import {addToCart,removeFromCart,incrementCount,decrementCount,searchCartItems} from '../actions/cartActions';
-import {fetchProducts} from '../actions/productActions'
+import {fetchProducts,clearData} from '../actions/productActions'
 
 import Header from './Header'
 class Cart extends Component{
   
-   
+   componentDidMount(){
+       this.props.clearData()
+   }
     onChange=(e)=>{
         this.setState({
             [e.target.name]:e.target.value
@@ -57,6 +59,7 @@ class Cart extends Component{
             cart=<h5>Your cart is empty</h5>
             totalPriceTable=""
         } else{
+
             cart=<h5>No matching products found in cart</h5>
             totalPriceTable=""
         }
@@ -87,4 +90,4 @@ const mapStateToProps=state=>(
     })
 
 export default connect(mapStateToProps,{addToCart,removeFromCart,fetchProducts,incrementCount,decrementCount,
-    searchCartItems})(Cart);
+    searchCartItems,clearData})(Cart);

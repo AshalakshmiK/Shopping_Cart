@@ -1,3 +1,4 @@
+import { CLEAR_SORT } from "../actions/types";
 
 const initialstate = {items:[],searchItems:[],searchTerm:"",filter:"",range:{"min":100,"max":1000},isLoading:true,sort:""}
 
@@ -48,7 +49,17 @@ export default function(state=initialstate,action){
                                 ...state,searchItems:products,    
                                         searchTerm:action.payload.search,
                                 }
-  
+        case CLEAR_SORT:
+                        return{
+                                ...state,
+                                sort:"",
+                                range:{"min":100,"max":1000},
+                                filter:"",
+                                isLoading:true,
+                                searchTerm:"",
+                                searchItems:[]
+                                //searchItems:state.products.items
+                                }
                         
                          
         default:
